@@ -40,8 +40,16 @@
             });
         };
 
-        var registerUser = function(){
-
+        var registerUser = function(username, email, password, confirmpassword){
+            var req = {
+                method: 'POST',
+                url: apiUrl + 'user/register',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: $httpParamSerializer({ username: username, email: email, password: password, confirmpassword: confirmpassword })
+            }
+            return $http(req);
         };
 
 
