@@ -1,0 +1,33 @@
+<div class="pageContainer">
+    <div class="photoContainer">
+        <img ng-src="{{vm.photo.optimisedAddress}}" alt="{{vm.photo.name}}">
+    </div>
+    <div class="photoSidebar">
+        <div class="userContainer">
+            <a ng-href="#/user/{{vm.user.username}}">
+                <img ng-src="{{vm.user.profilePhoto}}" alt="{{vm.user.username}}">
+            </a>
+            <h3><a ng-href="#/user/{{vm.user.username}}">{{vm.user.firstName}} {{vm.user.lastName}}</a></h3>
+        </div>
+        <div class="photoDescription">
+            <div class="title">
+                <h4>{{vm.photo.name}}</h4>
+            </div>
+            <div class="exifDetails">
+                <h4>Details:</h4>
+                <ul>
+                    <li>Key One</li>
+                    <li>Key Two</li>
+                    <li>Key Three</li>
+                    <li>Key Four</li>
+                    <li>Key Five</li>
+                    <li>Key Six</li>
+                    <li>Key Seven</li>
+                    <li>Key Eight</li>
+                    <li>Key Nine</li>
+                    <li>Key Ten</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

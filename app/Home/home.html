@@ -4,6 +4,8 @@
 </form>
 <div class="imageContainer">
     <div class="individualImage" ng-repeat="photo in vm.photos">
-        <img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">
+        <a ng-href="#/photo/{{photo.Name}}">
+            <img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">
+        </a>
     </div>
 </div>

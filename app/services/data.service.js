@@ -1,5 +1,4 @@
 (function(){
-'use strict';
 
     var photoShareAPI = function($http, $httpParamSerializer){
 
@@ -23,6 +22,16 @@
                 });
         };
 
+        var getPhotoByName = function(photoName){
+            var req = {
+                method: 'GET',
+                url: apiUrl + 'photo/byname/' + photoName
+            };
+
+            return $http(req).then(function(response){
+                return response.data;
+            });
+        }
 
         //User API
         var loginUser = function(username, password){
@@ -48,16 +57,29 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 data: $httpParamSerializer({ username: username, email: email, password: password, confirmpassword: confirmpassword })
-            }
+            };
             return $http(req);
+        };
+
+        var getProfileInfo = function(userId){
+            var req ={
+                method: 'GET',
+                url: apiUrl + 'user/' + userId
+            };
+
+            return $http(req).then(function(response){
+                return response.data;
+            })
         };
 
 
         return {
             getAllPhotos : getAllPhotos,
             searchAllPhotos: searchAllPhotos,
+            getPhotoByName: getPhotoByName,
             loginUser: loginUser,
-            registerUser: registerUser
+            registerUser: registerUser,
+            getProfileInfo: getProfileInfo
         };
 
 

@@ -1,5 +1,5 @@
 /*Cross Page*/
-body, html, form, input, div{
+body, html, form, input, div, img{
     margin:0;
     padding: 0;
     box-sizing: border-box;
@@ -35,13 +35,14 @@ header{
     display:flex;
     flex-direction:column;
     width: 100vw;
-
+    /*Gap for header*/
     margin-top:-50px;
 }
 .pageContainer{
     width:100vw;
     height:100vh;
     display: flex;
+    /*Padding to return below header*/
     padding-top:50px;
 }
 /*Home Page*/
@@ -64,8 +65,8 @@ header{
     max-height: 200px;
     margin: 10px 5px;
 }
-.individualImage > img{
-    height: 100%;
+.individualImage img{
+    height: 200px;
 }
 
 /*Login Page*/
@@ -84,5 +85,36 @@ header{
     margin: 10px;
     width:100%;
     height:25px;
+}
 
+/*Photo Page*/
+.photoContainer{
+    margin:auto;
+    /*padding:35px 25px 35px 50px;*/
+}
+.photoContainer > img{
+    padding: 35px 25px 25px 50px;
+    height:100%;
+}
+.photoSidebar{
+    display: flex;
+    width: 30%;
+    max-width:300px;
+    height:100%;
+    margin: auto;
+    margin-right:0;
+}
+.photoSidebar{
+    background-color: whitesmoke;
+    padding:25px;
+    display: flex;
+    flex-direction: column;
+}
+.userContainer{
+    display: flex;
+    margin: 10px 0;
+}
+.userContainer img {
+    padding-right: 30px;
+    border-radius: 50%;
 }

@@ -15,6 +15,10 @@
                 templateUrl: "login/login.html",
                 controller: "LoginController as vm"
             })
+            .when("/photo/:name",{
+                templateUrl: "photo/photo.html",
+                controller: "PhotoController as vm"
+            })
             .otherwise({redirectTo: "/"});
     });
 
