@@ -1,5 +1,9 @@
-<div class="searchContainer">
-    <form name="searchForm">
-        <input type="search" placeholder="Search for photos...">
-    </form>
+
+<form name="searchForm" class="pageContainer" ng-submit="vm.searchAllPhotos()">
+    <input type="search" placeholder="Search for photos..." ng-model="vm.photoQuery">
+</form>
+<div class="imageContainer">
+    <div class="individualImage" ng-repeat="photo in vm.photos">
+        <img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">
+    </div>
 </div>

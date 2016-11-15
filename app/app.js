@@ -6,7 +6,16 @@
             .when("/", {
                 templateUrl: "home/home.html",
                 controller: "HomeController as vm"
-            });
+            })
+            .when("/login", {
+                templateUrl: "login/login.html",
+                controller: "LoginController as vm"
+            })
+            .when("/register" ,{
+                templateUrl: "login/login.html",
+                controller: "LoginController as vm"
+            })
+            .otherwise({redirectTo: "/"});
     });
 
 

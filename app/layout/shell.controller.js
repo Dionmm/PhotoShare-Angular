@@ -1,8 +1,5 @@
 (function(){
-    angular.module('PhotoShare').controller("ShellController",function(photoShareAPI){
+    angular.module('PhotoShare').controller("ShellController",function(){
         var vm = this;
-        photoShareAPI.getAllPhotos().then(function(data){
-            vm.message = data;
-        });
     });
 })();

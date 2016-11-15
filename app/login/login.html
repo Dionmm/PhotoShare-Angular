@@ -1,0 +1,17 @@
+<div class="pageContainer">
+    <div class="formContainer">
+        <form name="loginForm" class="loginForm" ng-submit="vm.loginUser()">
+            <input type="text" placeholder="Username" ng-model="vm.loginUsername" required>
+            <input type="password" placeholder="Password" ng-model="vm.loginPassword" required>
+            <input type="submit" value="Login">
+        </form>    hi, {{vm.data.userName}}
+
+        <form name="registerForm" class="loginForm" ng-submit="vm.registerUser()">
+            <input type="text" placeholder="Username" ng-model="vm.registerUsername" required>
+            <input type="email" placeholder="Email" ng-model="vm.registerEmail">
+            <input type="password" placeholder="Password" ng-model="vm.registerPassword" required>
+            <input type="password" placeholder="Confirm Password" ng-model="vm.registerConfirmPassword" required>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</div>
