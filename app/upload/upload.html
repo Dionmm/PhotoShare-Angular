@@ -1,0 +1,23 @@
+<div class="pageContainer">
+    <div class="uploadContainer" nv-file-drop="" uploader="vm.uploader" ng-show="vm.uploader.isHTML5">
+        <div class="drag-n-drop" nv-file-drop=""></div>
+        <ul>
+            <li ng-repeat="item in vm.uploader.queue">
+                <span>{{item.file.name}}</span>
+                <span>{{item.isReady}}</span>
+                <span>{{item.isUploading}}</span>
+                <span>{{item.progress}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="uploadSidebar">
+        <form>
+            <input type="text" name="name">
+            <label for="forSale">For Sale:</label><input id="forSale" type="checkbox" name="forSale" ng-model="vm.forSale">
+            <input type="number" name="price" ng-show="vm.forSale">
+
+        </form>
+        <button ng-click="vm.uploadPhoto()">Upload Photo</button>
+    </div>
+
+</div>

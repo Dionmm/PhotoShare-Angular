@@ -96,6 +96,7 @@ header{
     padding: 35px 25px 25px 50px;
     height:100%;
 }
+/*Wtf is this? fix it*/
 .photoSidebar{
     display: flex;
     width: 30%;
@@ -117,4 +118,21 @@ header{
 .userContainer img {
     padding-right: 30px;
     border-radius: 50%;
+}
+
+/*Upload Page*/
+.uploadContainer{
+    width: 70%;
+    height:100%;
+    background-color: #222222;
+}
+.drag-n-drop{
+    height:200px;
+    width: 300px;
+    background-color: #999999;
+    border: dashed 1px;
+}
+.uploadSidebar{
+    width: 30%;
+    height:100%;
 }

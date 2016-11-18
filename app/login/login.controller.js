@@ -14,15 +14,18 @@
             if(vm.loginUsername !== "" || vm.loginPassword !== ""){
                 photoShareAPI.loginUser(vm.loginUsername, vm.loginPassword)
                     .then(function(data){
-                        vm.message = "hi, " + data.userName;
+                        //Save the Bearer token to session storage
                         $window.sessionStorage.access_token = data.access_token;
-                        $scope.$emit('handleLogin', {username: data.userName, name: "Dion"});
+
+                        //Event to initiate the change of nav in the top right
+                        $scope.$emit('handleLogin', {username: data.userName, name: data.firstName});
+
+                        //Redirect to home
                         $location.path('/');
                     },
                     function(error){
                         delete $window.sessionStorage.access_token;
                         console.warn(error.data.error_description);
-                        vm.message = error.data.error_description;
                     });
             } else{
                 console.error('Username or password not supplied');

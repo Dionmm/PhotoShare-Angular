@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('PhotoShare', ["ngRoute"]);
+    var app = angular.module('PhotoShare', ["ngRoute", "angularFileUpload"]);
 
     app.config(function($routeProvider){
         $routeProvider
@@ -18,6 +18,10 @@
             .when("/photo/:name",{
                 templateUrl: "photo/photo.html",
                 controller: "PhotoController as vm"
+            })
+            .when("/upload", {
+                templateUrl: "upload/upload.html",
+                controller: "UploadController as vm"
             })
             .otherwise({redirectTo: "/"});
     });
