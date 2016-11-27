@@ -9,7 +9,7 @@ body, html, form, input, div, img, header, a, h1, h2, h3, h4, p, ul, li{
     padding: 0;
     width: 100vw;
     min-height: 100vh;
-    background-color: grey;
+    background-color: Purple;
 }
 header{
 
@@ -51,6 +51,7 @@ header{
     display: flex;
     /*Padding to return below header*/
     padding-top:50px;
+    background-color: #222;
 }
 
 h1{
@@ -68,8 +69,15 @@ a{
     color: inherit;
     font-family: 'Lato', sans-serif;
 }
-
-
+input{
+    font-size: 20px;
+    padding: 30px 15px;
+    border: none;
+    border-radius: 3px;
+}
+input:focus{
+    outline: none;
+}
 /*Home Page*/
 .pageContainer.homePage{
     background-image: url("../hero.jpg");
@@ -78,12 +86,9 @@ a{
 }
 .homePage input{
     width: 50vw;
-    height: 30px;
     margin-top: 25vh;
-    font-size: 20px;
-    padding: 5px 15px;
-    border: none;
-    border-radius: 3px;
+}
+.homePage input:focus{
 }
 .inputContainer{
     margin: auto;

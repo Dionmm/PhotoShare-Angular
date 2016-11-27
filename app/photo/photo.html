@@ -4,7 +4,7 @@
     </div>
     <div class="photoSidebar">
         <div class="userContainer">
-            <a ng-href="#/user/{{vm.user.username}}">
+            <a ng-href="#/user/{{vm.user.username}}" ng-show="vm.user.profilePhoto">
                 <img ng-src="{{vm.user.profilePhoto}}" alt="{{vm.user.username}}">
             </a>
             <h3><a ng-href="#/user/{{vm.user.username}}">{{vm.user.firstName}} {{vm.user.lastName}}</a></h3>

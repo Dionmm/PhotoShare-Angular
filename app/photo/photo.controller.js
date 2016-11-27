@@ -4,16 +4,14 @@
         vm.photo = {
             name: $routeParams.name
         };
-        vm.user = {
-
-        };
+        vm.user = {};
 
         photoShareAPI.getPhotoByName(vm.photo.name)
             .then(function(data){
                 vm.photo.optimisedAddress = data.OptimisedAddress;
                 console.log(data);
                 vm.user.userId = data.UserId;
-                vm.user.username = data.userName;
+                vm.user.username = data.UserName;
 
 
                 vm.getProfileInfo(vm.user.userId);
@@ -24,7 +22,7 @@
         vm.getProfileInfo = function(userId){
             photoShareAPI.getProfileInfo(userId)
                 .then(function(data){
-                    vm.user.firstName = data.FirstName;
+                    vm.user.firstName = data.FirstName || vm.user.username;
                     vm.user.lastName = data.LastName;
                     vm.user.profileDescription = data.ProfileDescription;
                     vm.user.profilePhoto = data.ProfilePhoto;
