@@ -17,8 +17,10 @@
                         //Save the Bearer token to session storage
                         $window.sessionStorage.access_token = data.access_token;
 
+                        $window.sessionStorage.name = data.firstName || data.userName;
+
                         //Event to initiate the change of nav in the top right
-                        $scope.$emit('handleLogin', {username: data.userName, name: data.firstName});
+                        $scope.$emit('handleLogin', {name: data.firstName, username: data.userName});
 
                         //Redirect to home
                         $location.path('/');

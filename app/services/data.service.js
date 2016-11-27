@@ -1,9 +1,10 @@
 (function(){
 
-    var photoShareAPI = function($http, $httpParamSerializer, FileUploader){
+    var photoShareAPI = function($http, $httpParamSerializer, $window, FileUploader){
 
         var tokenUrl = "http://www.photoshare.party/token";
         var apiUrl = "http://www.photoshare.party/api/";
+        var authToken = 'Bearer ' + $window.sessionStorage.access_token;
 
         //Photo API
 
@@ -78,6 +79,23 @@
           })
         };
 
+        var addPurchaseToDB = function(token, id){
+            var req = {
+                method: 'POST',
+                url: apiUrl + 'purchase/' + id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                },
+                data: $httpParamSerializer({token: token})
+
+            };
+            return $http(req).then(function(response){
+                return response.data;
+            });
+        };
+
+
         //User API
         var loginUser = function(username, password){
             var req = {
@@ -125,6 +143,7 @@
             createFileUploader: createFileUploader,
             uploadPhoto: uploadPhoto,
             updatePhoto: updatePhoto,
+            addPurchaseToDB: addPurchaseToDB,
             loginUser: loginUser,
             registerUser: registerUser,
             getProfileInfo: getProfileInfo

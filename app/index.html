@@ -1,21 +1,35 @@
 <html ng-app="PhotoShare" ng-cloak>
 <head>
     <title>PhotoShare</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Raleway:400,500" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 </head>
 <body>
 
     <div ng-include="'layout/shell.html'"></div>
+
+    <!--Dependecies-->
     <script src="../../node_modules/angular/angular.js"></script>
     <script src="../../node_modules/angular-route/angular-route.js"></script>
     <script src="../../node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
+
+    <!--Core-->
     <script src="app.js"></script>
+
+    <!--Controllers-->
     <script src="layout/shell.controller.js"></script>
     <script src="home/home.controller.js"></script>
     <script src="services/data.service.js"></script>
     <script src="login/login.controller.js"></script>
     <script src="photo/photo.controller.js"></script>
+    <script src="purchase/purchase.controller.js"></script>
     <script src="upload/upload.controller.js"></script>
+
+    <!--Stripe implementation-->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+        Stripe.setPublishableKey('pk_test_QkwPXLR7sJdFBJTBRU6xd7Yi');
+    </script>
 </body>
 </html>

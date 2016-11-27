@@ -1,5 +1,5 @@
 /*Cross Page*/
-body, html, form, input, div, img{
+body, html, form, input, div, img, header, a, h1, h2, h3, h4, p, ul, li{
     margin:0;
     padding: 0;
     box-sizing: border-box;
@@ -12,31 +12,38 @@ body, html, form, input, div, img{
     background-color: grey;
 }
 header{
+
+    display: flex;
+    position: fixed;
     height: 50px;
     width:100vw;
-    background-color: pink;
-    display: flex;
+    background-color: white;
+    padding: 0 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 .logo{
-    margin: auto 0 auto 15px;
+    margin: auto 0;
     padding: 0;
-
 }
 .nav{
-    margin: auto 5px auto auto;
+    margin: auto 0 auto auto;
     display: flex;
-    padding-right: 15px;
 }
-.nav > div{
+.nav ul{
+    display: flex;
+}
+.nav li{
     margin: auto;
+    list-style: none;
+}
+.nav li a{
+    height: 100%;
     padding: 10px;
 }
 .mainContent{
     display:flex;
     flex-direction:column;
     width: 100vw;
-    /*Gap for header*/
-    margin-top:-50px;
 }
 .pageContainer{
     width:100vw;
@@ -45,19 +52,56 @@ header{
     /*Padding to return below header*/
     padding-top:50px;
 }
+
+h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+h2{
+
+}
+p{
+
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Lato', sans-serif;
+}
+
+
 /*Home Page*/
-.pageContainer > input{
+.pageContainer.homePage{
+    background-image: url("../hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.homePage input{
     width: 50vw;
-    height: 20px;
+    height: 30px;
+    margin-top: 25vh;
+    font-size: 20px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 3px;
+}
+.inputContainer{
     margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.button.explore{
+    width:100px;
+    margin:auto;
+    margin-top: 25vh;
 }
 .imageContainer{
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
     min-height: 100vh;
-    width: 90vw;
-    margin: 0 auto;
+    width: 100%;
+    padding: 20px 10%;
     background-color: whitesmoke;
 }
 .individualImage{

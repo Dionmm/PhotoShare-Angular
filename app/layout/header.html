@@ -1,6 +1,11 @@
 <h1 class="logo"><a href="#/">PhotoShare</a></h1>
 <nav class="nav">
-    <div ng-hide="vm.user"><a href="#/login">Login</a></div>
-    <div ng-hide="vm.user"><a href="#/register">Register</a></div>
-    <div ng-show="vm.user">Hi, {{vm.user}}</div>
+    <ul ng-hide="vm.name">
+        <li><a href="#/login">Login</a></li>
+        <li><a href="#/register">Register</a></li>
+    </ul>
+    <ul ng-show="vm.name">
+        <li><a href="#/user">Hi, {{vm.name}}</a></li>
+        <li><a href="" ng-click="vm.logout()">Logout</a></li>
+    </ul>
 </nav>

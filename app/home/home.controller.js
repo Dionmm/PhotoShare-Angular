@@ -1,5 +1,5 @@
 (function(){
-    angular.module('PhotoShare').controller("HomeController",function(photoShareAPI){
+    angular.module('PhotoShare').controller("HomeController",function($location, $anchorScroll, photoShareAPI){
         var vm = this;
 
         photoShareAPI.getAllPhotos().then(function(data){
@@ -13,6 +13,13 @@
                 });
             }
         };
+
+
+        vm.explore = function(){
+            $location.hash('imageContainer');
+            $anchorScroll();
+        }
+
 
     });
 })();
