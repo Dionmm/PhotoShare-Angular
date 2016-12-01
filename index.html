@@ -1,0 +1,42 @@
+<html ng-app="PhotoShare" ng-cloak>
+<head>
+    <title>PhotoShare</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Raleway:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="App/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+</head>
+<body>
+
+    <div ng-include="'App/layout/shell.html'"></div>
+
+    <!--Dependencies-->
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="../node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
+
+    <!--Core-->
+    <script src="App/app.js"></script>
+
+    <!--Controllers-->
+    <script src="App/layout/shell.controller.js"></script>
+    <script src="App/home/home.controller.js"></script>
+    <script src="App/services/data.service.js"></script>
+    <script src="App/login/login.controller.js"></script>
+    <script src="App/photo/photo.controller.js"></script>
+    <script src="App/purchase/purchase.controller.js"></script>
+    <script src="App/upload/upload.controller.js"></script>
+    <script src="App/chat/chat.controller.js"></script>
+
+    <!--SignalR Dependencies-->
+    <script src="/Scripts/jquery-1.6.4.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+
+
+    <!--Stripe implementation-->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+        Stripe.setPublishableKey('pk_test_QkwPXLR7sJdFBJTBRU6xd7Yi');
+    </script>
+</body>
+</html>

@@ -2,14 +2,14 @@
 
     var photoShareAPI = function($http, $httpParamSerializer, $window, FileUploader){
 
-        var tokenUrl = "http://www.photoshare.party/token";
-        var apiUrl = "http://www.photoshare.party/api/";
+        var tokenUrl = "https://www.photoshare.party/token";
+        var apiUrl = "https://www.photoshare.party/api/";
         var authToken = 'Bearer ' + $window.sessionStorage.access_token;
+        var pageSize = 20;
 
         //Photo API
 
         var getAllPhotos = function(){
-            //Commented out http request and using temp local data for development
             return $http.get(apiUrl + "photo")
                 .then(function(response){
                     return response.data;
@@ -22,11 +22,17 @@
                     return response.data;
                 });
         };
+        var getMostRecentPhotos = function(){
+            return $http.get(apiUrl + "photo/mostrecent?pagesize=" + pageSize) //PageSize declared at top
+                .then(function(response){
+                    return response.data;
+                });
+        };
 
-        var getPhotoByName = function(photoName){
+        var getPhotoById = function(photoId){
             var req = {
                 method: 'GET',
-                url: apiUrl + 'photo/byname/' + photoName
+                url: apiUrl + 'photo/' + photoId
             };
 
             return $http(req).then(function(response){
@@ -36,7 +42,7 @@
 
         var createFileUploader = function(){
             var headers = {
-                Authorization: "Bearer K0Bpdu9NaDODMzrg3rFcFw7XYRmALkKRA6uvYGBBKEOG5lHgtfgEqm8arGh6oaM9HxtSh3e4bvDPxKsaBzlkiVffvBCo7CuR7wcrR3JH1yyESuUgBBjS2aDHf3Tk60vUHK_ZTe84kcpDLQsY3jLFBokByCFAcxw4thQLgt4eiHNMBLn6-WG7VkQAfcQn1rK61GjVi4w8CseDPDog2zTMS4yU16mkiuftfFKlujoQBEdTux3KhaBJqxIJpPZx2Cg2xhcHWGOhC1p2HI_96U5vfaeYD4i_VqoXkP_uM24UH4QnwVx1DD7ZuTONyQ9WCsxMQ1m6dorn8vkR2xV3RH7NNZNw5xnaCIEazMTUDPpXS4S6tACTpGmRSIEJ_Ai781H86xYl8GwmWWQykYct0bsCYyyhUvGTGW3zULpLBQtJume5do26qeZWpQDhFj5pdAmjBbBbPjO7gwTezWWpzs7YO4Bt7IKmwYhwRVgB1RnHqO_ZSTEgnO4iNXDiP13H6PtZjedcQHyDYCmxv9u1wZN5KA"
+                Authorization: authToken
             };
             var url = apiUrl + 'photo';
 
@@ -45,14 +51,14 @@
 
         var uploadPhoto = function(uploader){
             var headers = {
-                Authorization: "Bearer K0Bpdu9NaDODMzrg3rFcFw7XYRmALkKRA6uvYGBBKEOG5lHgtfgEqm8arGh6oaM9HxtSh3e4bvDPxKsaBzlkiVffvBCo7CuR7wcrR3JH1yyESuUgBBjS2aDHf3Tk60vUHK_ZTe84kcpDLQsY3jLFBokByCFAcxw4thQLgt4eiHNMBLn6-WG7VkQAfcQn1rK61GjVi4w8CseDPDog2zTMS4yU16mkiuftfFKlujoQBEdTux3KhaBJqxIJpPZx2Cg2xhcHWGOhC1p2HI_96U5vfaeYD4i_VqoXkP_uM24UH4QnwVx1DD7ZuTONyQ9WCsxMQ1m6dorn8vkR2xV3RH7NNZNw5xnaCIEazMTUDPpXS4S6tACTpGmRSIEJ_Ai781H86xYl8GwmWWQykYct0bsCYyyhUvGTGW3zULpLBQtJume5do26qeZWpQDhFj5pdAmjBbBbPjO7gwTezWWpzs7YO4Bt7IKmwYhwRVgB1RnHqO_ZSTEgnO4iNXDiP13H6PtZjedcQHyDYCmxv9u1wZN5KA"
+                Authorization: authToken
             };
             uploader.url = apiUrl + 'photo';
             uploader.headers = headers;
             uploader.uploadAll();
             uploader.onSuccessItem = function(fileItem, response, status){
                 console.info('Success', response, status);
-                return updatePhoto(response.Id)
+                return updatePhoto(response.Id);
             };
             uploader.onErrorItem = function(fileItem, response, status){
                 console.error('Error', response, status);
@@ -69,14 +75,14 @@
               url: apiUrl + 'photo/' + id,
               headers: {
                   'Content-Type': 'application/x-www-form-urlencoded',
-                  Authorization: "Bearer K0Bpdu9NaDODMzrg3rFcFw7XYRmALkKRA6uvYGBBKEOG5lHgtfgEqm8arGh6oaM9HxtSh3e4bvDPxKsaBzlkiVffvBCo7CuR7wcrR3JH1yyESuUgBBjS2aDHf3Tk60vUHK_ZTe84kcpDLQsY3jLFBokByCFAcxw4thQLgt4eiHNMBLn6-WG7VkQAfcQn1rK61GjVi4w8CseDPDog2zTMS4yU16mkiuftfFKlujoQBEdTux3KhaBJqxIJpPZx2Cg2xhcHWGOhC1p2HI_96U5vfaeYD4i_VqoXkP_uM24UH4QnwVx1DD7ZuTONyQ9WCsxMQ1m6dorn8vkR2xV3RH7NNZNw5xnaCIEazMTUDPpXS4S6tACTpGmRSIEJ_Ai781H86xYl8GwmWWQykYct0bsCYyyhUvGTGW3zULpLBQtJume5do26qeZWpQDhFj5pdAmjBbBbPjO7gwTezWWpzs7YO4Bt7IKmwYhwRVgB1RnHqO_ZSTEgnO4iNXDiP13H6PtZjedcQHyDYCmxv9u1wZN5KA"
+                  Authorization: authToken
               },
               data: $httpParamSerializer(udata)
           };
 
           return $http(req).then(function(response){
               return response.data;
-          })
+          });
         };
 
         var addPurchaseToDB = function(token, id){
@@ -139,7 +145,8 @@
         return {
             getAllPhotos : getAllPhotos,
             searchAllPhotos: searchAllPhotos,
-            getPhotoByName: getPhotoByName,
+            getMostRecentPhotos: getMostRecentPhotos,
+            getPhotoById: getPhotoById,
             createFileUploader: createFileUploader,
             uploadPhoto: uploadPhoto,
             updatePhoto: updatePhoto,

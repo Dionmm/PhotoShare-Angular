@@ -1,0 +1,11 @@
+<div class="chatBox" ng-controller="ChatController as vm">
+    <ul class="chat">
+        <li ng-repeat="message in vm.content">
+            {{message.Content}}
+            <span>{{message.UserName}}</span>
+        </li>
+    </ul>
+    <form class="message" ng-submit="vm.sendMessage()">
+        <input type="text" placeholder="Communicate.." ng-model="vm.message">
+    </form>
+</div>

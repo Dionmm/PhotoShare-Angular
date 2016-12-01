@@ -27,6 +27,7 @@
                     },
                     function(error){
                         delete $window.sessionStorage.access_token;
+                        delete $window.sessionStorage.name;
                         console.warn(error.data.error_description);
                     });
             } else{

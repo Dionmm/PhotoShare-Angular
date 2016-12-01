@@ -2,13 +2,13 @@
     angular.module('PhotoShare').controller("PhotoController",function($routeParams, photoShareAPI){
         var vm = this;
         vm.photo = {
-            name: $routeParams.name
+            id: $routeParams.id
         };
         vm.user = {};
 
-        photoShareAPI.getPhotoByName(vm.photo.name)
+        photoShareAPI.getPhotoById(vm.photo.id)
             .then(function(data){
-                vm.photo.optimisedAddress = data.OptimisedAddress;
+                vm.photo.address = data.Address;
                 console.log(data);
                 vm.user.userId = data.UserId;
                 vm.user.username = data.UserName;
@@ -16,7 +16,7 @@
 
                 vm.getProfileInfo(vm.user.userId);
             }, function(error){
-                console.error(error.data.error_description);
+                console.error(error.data);
             });
 
         vm.getProfileInfo = function(userId){

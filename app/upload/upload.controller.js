@@ -1,5 +1,5 @@
 (function(){
-    angular.module('PhotoShare').controller("UploadController",function(photoShareAPI){
+    angular.module('PhotoShare').controller('UploadController',function(photoShareAPI){
         var vm = this;
 
         vm.uploader = photoShareAPI.createFileUploader();

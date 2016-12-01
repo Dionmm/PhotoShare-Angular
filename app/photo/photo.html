@@ -1,6 +1,6 @@
 <div class="pageContainer">
     <div class="photoContainer">
-        <img ng-src="{{vm.photo.optimisedAddress}}" alt="{{vm.photo.name}}">
+        <img ng-src="{{vm.photo.address}}" alt="{{vm.photo.name}}">
     </div>
     <div class="photoSidebar">
         <div class="userContainer">
@@ -29,7 +29,7 @@
                 </ul>
             </div>
         </div>
-        <div ng-include="'purchase/purchase.html'"></div>
+        <div ng-include="'App/purchase/purchase.html'"></div>
 
     </div>
 </div>

@@ -1,6 +1,7 @@
 <div ng-controller="ShellController as vm" class="container">
 
-    <header ng-include="'layout/header.html'"></header>
+    <header ng-include="'App/layout/header.html'"></header>
 
     <section class="mainContent" ng-view></section>
+    <div ng-include="'App/chat/chat.html'"></div>
 </div>
