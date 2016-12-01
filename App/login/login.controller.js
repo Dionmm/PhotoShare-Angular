@@ -19,8 +19,9 @@
 
                         $window.sessionStorage.name = data.firstName || data.userName;
 
+                        $window.sessionStorage.role = data.role;
                         //Event to initiate the change of nav in the top right
-                        $scope.$emit('handleLogin', {name: data.firstName, username: data.userName});
+                        $scope.$emit('handleLogin', {name: data.firstName, username: data.userName, role: data.role});
 
                         //Redirect to home
                         $location.path('/');
@@ -28,6 +29,7 @@
                     function(error){
                         delete $window.sessionStorage.access_token;
                         delete $window.sessionStorage.name;
+                        delete $window.sessionStorage.role;
                         console.warn(error.data.error_description);
                     });
             } else{

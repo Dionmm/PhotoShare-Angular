@@ -3,5 +3,7 @@
     <header ng-include="'App/layout/header.html'"></header>
 
     <section class="mainContent" ng-view></section>
-    <div ng-include="'App/chat/chat.html'"></div>
+    <div ng-if="vm.authorised">
+        <div ng-include="'App/chat/chat.html'"></div>
+    </div>
 </div>

@@ -1,7 +1,8 @@
-<div class="chatBox" ng-controller="ChatController as vm">
+﻿<div class="chatBox" ng-controller="ChatController as vm">
+    <div class="chatHeader" ng-click="vm.hideChat()"><p>Hide Chat</p></div>
     <ul class="chat">
         <li ng-repeat="message in vm.content">
-            {{message.Content}}
+            <p>{{message.Content}}</p>
             <span>{{message.UserName}}</span>
         </li>
     </ul>

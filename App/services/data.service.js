@@ -113,7 +113,7 @@
                 data: $httpParamSerializer({grant_type: 'password', username: username, password: password })
 
             };
-            return $http(req).then(function(response){
+            return $http(req).then(function (response) {
                 return response.data;
             });
         };
