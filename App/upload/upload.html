@@ -1,23 +1,33 @@
 <div class="pageContainer">
     <div class="uploadContainer" nv-file-drop="" uploader="vm.uploader" ng-show="vm.uploader.isHTML5">
-        <div class="drag-n-drop" nv-file-drop=""></div>
-        <ul>
-            <li ng-repeat="item in vm.uploader.queue">
-                <span>{{item.file.name}}</span>
-                <span>{{item.isReady}}</span>
-                <span>{{item.isUploading}}</span>
-                <span>{{item.progress}}</span>
-            </li>
-        </ul>
+        <div class="drag-n-drop" nv-file-drop="">
+            <ul>
+                <li ng-repeat="item in vm.uploader.queue">
+                    <span>{{item.file.name}}</span>
+                    <span ng-thumb="{ file: item._file, height: 300 }"></span>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="uploadSidebar">
-        <form>
-            <input type="text" name="name">
-            <label for="forSale">For Sale:</label><input id="forSale" type="checkbox" name="forSale" ng-model="vm.forSale">
-            <input type="number" name="price" ng-show="vm.forSale">
-
-        </form>
-        <button ng-click="vm.uploadPhoto()">Upload Photo</button>
+    <div class="uploadSidebar sidebar">
+        <input type="text" ng-model="vm.photo.name" placeholder="Title" maxlength="20">
+        <label for="forSale">For Sale</label><input id="forSale" type="checkbox" name="forSale" ng-model="vm.forSale">
+        <input type="number" min="0" ng-model="vm.photo.price" ng-disabled="!vm.forSale" placeholder="Free">
+        <p>Meta Data</p>
+        <div class="metaDataContainer">
+            <div ng-repeat="number in vm.metaDataItems track by $index" class="metaData">
+                <input type="text" placeholder="Name" ng-model="vm.photo.exif[$index].Name" maxlength="50">
+                <input type="text" placeholder="Value" ng-model="vm.photo.exif[$index].Value" maxlength="300">
+                <div class="hiddenButton">
+                    <button ng-click="vm.removeMetaData($index)">&#x2715;</button>
+                </div>
+            </div>
+        </div>
+        <button class="button" ng-click="vm.addMetaData()">+</button>
+        <button class="button upload" ng-click="vm.uploadPhoto()" data-upload="Upload">
+            Upload
+            <div class="buttonProgress"></div>
+        </button>
     </div>
 
 </div>

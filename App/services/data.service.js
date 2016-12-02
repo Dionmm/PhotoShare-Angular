@@ -1,5 +1,5 @@
 (function(){
-
+'use strict'
     var photoShareAPI = function($http, $httpParamSerializer, $window, FileUploader){
 
         var tokenUrl = "https://www.photoshare.party/token";
@@ -46,10 +46,10 @@
             };
             var url = apiUrl + 'photo';
 
-            return new FileUploader({url: url, headers: headers})
+            return new FileUploader({url: url, headers: headers, removeAfterUpload: true, queueLimit: 1})
         };
 
-        var uploadPhoto = function(uploader){
+        var uploadPhoto = function(uploader, callback){
             var headers = {
                 Authorization: authToken
             };
@@ -58,7 +58,7 @@
             uploader.uploadAll();
             uploader.onSuccessItem = function(fileItem, response, status){
                 console.info('Success', response, status);
-                return updatePhoto(response.Id);
+                return callback(response.Id);
             };
             uploader.onErrorItem = function(fileItem, response, status){
                 console.error('Error', response, status);
@@ -66,23 +66,32 @@
         };
 
 
-        var updatePhoto = function(id){
-            var udata = {
-                Id: 33
+        var updatePhoto = function(id, name, price, exifData){
+            var data = {
+                Id: id,
+                Name: name,
+                Price: price
             };
-          var req = {
+            var count = 0;
+            for(var x of exifData){
+                var exifName = "Exif[" + count + "].Name";
+                var exifValue = "Exif[" + count + "].Value";
+                data[exifName] = x.Name;
+                data[exifValue] = x.Value;
+                count++;
+            }
+            var req = {
               method: 'PUT',
               url: apiUrl + 'photo/' + id,
               headers: {
                   'Content-Type': 'application/x-www-form-urlencoded',
                   Authorization: authToken
               },
-              data: $httpParamSerializer(udata)
-          };
-
-          return $http(req).then(function(response){
-              return response.data;
-          });
+              data: $httpParamSerializer(data)
+            };
+            return $http(req).then(function(response){
+                return response.data;
+            });
         };
 
         var addPurchaseToDB = function(token, id){
