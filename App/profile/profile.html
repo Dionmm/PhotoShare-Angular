@@ -1,0 +1,20 @@
+<div class="pageContainer profile">
+    <div class="backgroundPhoto">
+    </div>
+    <div class="profileHeader">
+        <h2>Dion MacIntyre</h2>
+        <div class="profilePhoto">
+            <img src="App/images/profile.jpg" alt="">
+        </div>
+        <div class="profileDescription">
+            <p>Explore the world, test yourself</p>
+        </div>
+    </div>
+</div>
+<div class="imageContainer">
+    <div class="individualImage" ng-repeat="photo in vm.photos">
+        <a ng-href="#/photo/{{photo.Id}}">
+            <img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">
+        </a>
+    </div>
+</div>

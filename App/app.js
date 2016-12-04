@@ -23,6 +23,14 @@
                 templateUrl: "App/upload/upload.html",
                 controller: "UploadController as vm"
             })
+            .when("/user/:username", {
+                templateUrl: "App/profile/profile.html",
+                controller: "ProfileController as vm"
+            })
+            .when("/profile/", {
+                templateUrl: "App/profile/profile.html",
+                controller: "ProfileController as vm"
+            })
             .otherwise({redirectTo: "/"});
     });
 
