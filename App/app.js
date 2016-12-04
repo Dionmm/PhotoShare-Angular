@@ -28,8 +28,12 @@
                 controller: "ProfileController as vm"
             })
             .when("/profile/", {
-                templateUrl: "App/profile/profile.html",
+                templateUrl: "App/profile/editProfile.html",
                 controller: "ProfileController as vm"
+            })
+            .when("/admin/", {
+                templateUrl: "App/admin/admin.html",
+                controller: "AdminController as vm"
             })
             .otherwise({redirectTo: "/"});
     });

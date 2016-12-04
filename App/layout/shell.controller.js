@@ -6,9 +6,13 @@
         if($window.sessionStorage.access_token){
             vm.name = $window.sessionStorage.name;
             vm.role = $window.sessionStorage.role;
-            if(vm.role === 'photographer' || vm.role === 'administrator'){
+            if(vm.role === 'administrator'){
+                vm.authorised = true;
+                vm.admin = true;
+            } else if(vm.role === 'photographer'){
                 vm.authorised = true;
             }
+
         }
 
         $scope.$on('handleLogin', function(event, args){

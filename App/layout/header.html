@@ -5,6 +5,7 @@
         <li><a href="#/register">Register</a></li>
     </ul>
     <ul ng-show="vm.name">
+        <li ng-show="vm.admin"><a href="#/admin">Admin</a></li>
         <li ng-show="vm.authorised"><a href="#/upload">Upload</a></li>
         <li><a href="#/profile">Hi, {{vm.name}}</a></li>
         <li><a href="" ng-click="vm.logout()">Logout</a></li>

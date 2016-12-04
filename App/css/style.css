@@ -124,8 +124,8 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 
 /*Home Page*/
 .pageContainer.homePage{
-    background-size: cover;
     background: url("../images/hero.jpg") no-repeat center center;
+    background-size: cover;
 }
 .homePage input{
     width: 50vw;
@@ -346,17 +346,17 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 }
 .backgroundPhoto{
     width:100%;
-    height: 80%;
+    height: 80vh;
     overflow: hidden;
-    background-size: cover;
     background: url("../images/background-medium.jpg") no-repeat center center;
+    background-size:cover;
 }
 .backgroundPhoto img{
     width:100%;
 }
 .profileHeader{
     padding:20px 20px 5px 20px;
-    height: 20%;
+    height: 20vh;
     border-top: 2px solid #222;
     position: relative;
     display: flex;
@@ -379,4 +379,40 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 }
 .profileDescription{
     margin: auto auto 0 auto;
+}
+
+/*User's Profile Page*/
+.accountDetails{
+    padding:30px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+.accountDetails li{
+    margin:5px;
+    list-style: none;
+
+}
+
+/*Admin Page*/
+.adminSidebar{
+    width:350px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.adminSidebar ul{
+    /*width:100%;*/
+}
+.adminSidebar li{
+    width:100%;
+    list-style: none;
+    padding:30px;
+    cursor: pointer;
+}
+.adminSidebar li:hover{
+    background-color: #485079;
+}
+.adminContent{
+    width: 100%;
+    background-color: whitesmoke;
 }
