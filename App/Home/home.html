@@ -1,10 +1,12 @@
-
-<form name="searchForm" class="pageContainer homePage" ng-submit="vm.searchAllPhotos()">
-    <div class="inputContainer">
-        <input type="search" placeholder="Search for photos..." ng-model="vm.photoQuery">
-        <button class="button explore" ng-click="vm.explore()">Explore</button>
-    </div>
-</form>
+<div class="pageContainer homePage">
+    <form name="searchForm" class="" ng-submit="vm.searchAllPhotos()">
+        <div class="inputContainer">
+            <input type="search" class="searchInput" placeholder="Search for photos..." ng-model="vm.photoQuery">
+            <input type="submit" class="searchSubmit" value="Go">
+        </div>
+    </form>
+    <button class="button explore" ng-click="vm.explore()">Explore</button>
+</div>
 <div class="imageContainer" id="imageContainer">
     <div class="individualImage" ng-repeat="photo in vm.photos">
         <a ng-href="#/photo/{{photo.Id}}">
