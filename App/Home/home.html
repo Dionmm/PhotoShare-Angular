@@ -8,6 +8,10 @@
     <button class="button explore" ng-click="vm.explore()">Explore</button>
 </div>
 <div class="imageContainer" id="imageContainer">
+    <div class="imageLoading" ng-hide="vm.photos">
+        <div class="loader"></div>
+        <p>Getting the latest photos...</p>
+    </div>
     <div class="individualImage" ng-repeat="photo in vm.photos">
         <a ng-href="#/photo/{{photo.Id}}">
             <img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">

@@ -27,10 +27,9 @@
                         $location.path('/');
                     },
                     function(error){
-                        delete $window.sessionStorage.access_token;
-                        delete $window.sessionStorage.name;
-                        delete $window.sessionStorage.role;
-                        console.warn(error.data.error_description);
+                        var errorMessage = error.data.error_description;
+                        toastr.error(errorMessage);
+                        console.error(errorMessage);
                     });
             } else{
                 console.error('Username or password not supplied');
@@ -38,21 +37,31 @@
         };
 
         vm.registerUser = function(){
+            var message;
             if(vm.registerUsername === ""){
-                console.error("Username is null");
+                message = 'Username cannot be empty';
+                console.error(message);
+                toastr.error(message);
             } else if(vm.registerPassword === ""){
-                console.error("Password is null");
+                message = 'Password cannot be empty';
+                console.error(message);
+                toastr.error(message);
             } else if(vm.registerPassword !== vm.registerConfirmPassword){
-                console.error("Passwords do not match");
+                message = 'Passwords do not match';
+                console.error(message);
+                toastr.error(message);
             } else{
-                photoShareAPI.registerUser(vm.registerUsername, vm.registerEmail, vm.registerPassword, vm.registerConfirmPassword)
+                photoShareAPI.registerUser(vm.registerUsername, vm.registerEmail, vm.registerPassword, vm.registerConfirmPassword, vm.awaitingAdminConfirmation)
                     .then(function(response){
                             if(response.status === 200){
                                 console.info('success');
+                                toastr.success('Please check your email to confirm your account', 'Success!')
                             }
                         },
                         function(error){
-                            console.warn(error.data.error_description);
+                            var errorMessage = error.data.Message;
+                            toastr.error(errorMessage);
+                            console.error(errorMessage);
                         });
             }
         }

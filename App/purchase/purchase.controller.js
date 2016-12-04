@@ -18,14 +18,17 @@
             Stripe.card.createToken(card, function(status, response){
 
                 if(response.error){
+                    toastr.error(response.error);
                     return console.error(response.error);
                 }
 
                 photoShareAPI.addPurchaseToDB(response.id, 23)
                     .then(function(response){
                         console.info(response);
+                        toastr.success('Good choice', 'Purchase Successful');
                     }, function(error){
-                        console.error(response);
+                        console.error(error);
+                        toastr.error(error);
 
                     });
             });

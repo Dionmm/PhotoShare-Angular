@@ -81,7 +81,7 @@ h1, h2, h3, h4{
 h3, h4 {
     font-weight: 700;
 }
-p, li, a, input, button, label{
+p, li, a, input, button, label, .toast{
     font-family: 'Lato', sans-serif;
 }
 a{
@@ -97,14 +97,12 @@ input{
 input:focus{
     outline: none;
 }
-button{
+button, input[type='submit']{
     border: none;
     border-radius: 3px;
     cursor: pointer;
     outline: none;
 }
-/*Credit
-https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 .button{
     font-size: 20px;
     font-weight: 300;
@@ -120,6 +118,85 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 .button:hover{
     background-color: #222;
     color: #7986cb;
+}
+
+
+/*CSS Loader credit http://codepen.io/msisto/pen/LntJe*/
+@-webkit-keyframes rotate-forever {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-moz-keyframes rotate-forever {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate-forever {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.loader {
+    -webkit-animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    animation-duration: 0.75s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: rotate-forever;
+    -moz-animation-name: rotate-forever;
+    animation-name: rotate-forever;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    animation-timing-function: linear;
+    height: 40px;
+    width: 40px;
+    border: 8px solid #222;
+    border-right-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.imageLoading{
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.imageLoading p{
+    margin-top: 10px;
 }
 
 /*Home Page*/
@@ -185,6 +262,7 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
     display: flex;
     width:50vw;
     height:50vh;
+    /*background-color: whitesmoke;*/
 }
 .loginForm{
     display: flex;
@@ -192,9 +270,15 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
     margin:auto;
 }
 .loginForm > input{
-    margin: 10px;
+    margin: 10px 0;
     width:100%;
-    height:25px;
+}
+.loginForm  input[type='checkbox']{
+    margin-left: 10px;
+}
+.loginForm label{
+    width:100%;
+    color: #fff;
 }
 
 /*Photo Page*/
@@ -241,8 +325,11 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 }
 .hiddenButton{
     position: absolute;
+    width: 9px;
     top:0;
-    right:48%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     opacity: 0;
     -webkit-transition: opacity 0.3s;
     -moz-transition: opacity 0.3s;
@@ -413,13 +500,11 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 
 /*Admin Page*/
 .adminSidebar{
-    width:350px;
+    padding: 0;
     color: #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
-.adminSidebar ul{
-    /*width:100%;*/
+    background-color: #222222;
 }
 .adminSidebar li{
     width:100%;
@@ -433,4 +518,13 @@ https://github.com/codrops/ButtonStylesInspiration/blob/master/css/buttons.css*/
 .adminContent{
     width: 100%;
     background-color: whitesmoke;
+}
+
+/*Override the position of the toast container for notifications*/
+#toast-container{
+    top: 62px;
+}
+#toast-container .toast{
+    opacity: 1;
+    box-shadow: 0 0 12px #222;
 }

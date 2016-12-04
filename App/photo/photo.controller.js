@@ -16,7 +16,10 @@
 
                 vm.getProfileInfo(vm.user.userId);
             }, function(error){
-                console.error(error.data);
+                console.error(error);
+                if(error.status === 404){
+                    toastr.error('That photo could not be found', 'Not Found');
+                }
             });
 
         vm.getProfileInfo = function(userId){
@@ -28,7 +31,8 @@
                     vm.user.profilePhoto = data.ProfilePhoto;
                     console.log(data);
                 }, function(error){
-                    console.error(error.data.error_description);
+                    console.error(error.data);
+                    toastr.error('Something went wrong', 'Please try again');
                 });
         }
 

@@ -8,7 +8,8 @@
         var token = $window.sessionStorage.access_token;
         var chatHidden = false;
         var initialChatHeight = $('.chat').prop('scrollHeight');
-        $.connection.hub.logging = true;
+
+        //Sends the oauth token as a query string on every request
         $.connection.hub.qs = {'bearerToken' : token};
 
 
@@ -37,12 +38,12 @@
         };
         chat.client.error = function(error){
             console.error(error);
+            toastr.error(error);
             $.connection.hub.stop();
         };
 
         //Init the chat
         $.connection.hub.start().done(function(){
-            console.log('Chat is loaded');
             $scope.$apply();
             $(".chat").scrollTop($('.chat').prop("scrollHeight"));
 
@@ -53,7 +54,7 @@
             console.info('Message sent');
             chat.server.send(vm.message);
             vm.message = '';
-        }
+        };
 
         vm.hideChat = function () {
             if (chatHidden) {

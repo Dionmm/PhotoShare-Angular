@@ -3,7 +3,11 @@
         var vm = this;
 
         photoShareAPI.getMostRecentPhotos().then(function(data){
-            vm.photos = data;
+            if(data){
+                vm.photos = data;
+            }else{
+                toastr.error('Something went wrong, please try again');
+            }
         });
 
         vm.searchAllPhotos = function(){

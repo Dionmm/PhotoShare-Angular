@@ -23,11 +23,11 @@
             }
 
         };
-        vm.uploader.onCompleteItem = function(){
+        vm.uploader.onErrorItem = function(fileItem, response, status){
+            console.error('Error', response, status);
+            toastr.error(response, 'Error');
+            vm.resetProgressBar();
         };
-
-
-
 
         //Controller functions
         vm.uploadPhoto = function(){
@@ -37,16 +37,17 @@
                     photoShareAPI.updatePhoto(id, vm.photo.name, vm.photo.price, vm.photo.exif)
                         .then(function(response){
                             console.info(response);
-                            progress = 0;
-                            $('.buttonProgress').css('width', progress+'%');
-                            $('.button.upload').attr('data-upload','Upload');
-
+                            toastr.success('That\'s a pretty picture', 'Upload Complete');
+                            vm.resetProgressBar();
                         }, function(error){
                             console.error(error);
+                            toastr.error(error);
+                            vm.resetProgressBar();
                         });
                 });
             } else{
                 console.warn('Something went wrong');
+                vm.resetProgressBar();
             }
         };
 
@@ -72,6 +73,11 @@
             vm.photo.exif.splice(index, 1)
         };
 
+        vm.resetProgressBar = function(){
+            progress = 0;
+            $('.buttonProgress').css('width', progress+'%');
+            $('.button.upload').attr('data-upload','Upload');
+        }
 
     });
 })();
