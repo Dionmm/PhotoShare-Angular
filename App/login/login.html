@@ -3,7 +3,7 @@
         <form name="loginForm" class="loginForm" ng-submit="vm.loginUser()">
             <input type="text" placeholder="Username" ng-model="vm.loginUsername" required>
             <input type="password" placeholder="Password" ng-model="vm.loginPassword" required>
-            <input type="submit" value="Login" class="button">
+            <input type="submit" value="Login" class="button" ng-disabled="vm.submitting">
         </form>
 
         <form name="registerForm" class="loginForm" ng-submit="vm.registerUser()">
@@ -12,7 +12,7 @@
             <input type="password" placeholder="Password" ng-model="vm.registerPassword" required>
             <input type="password" placeholder="Confirm Password" ng-model="vm.registerConfirmPassword" required>
             <label for="adminConf">Would like a photographer account?<input type="checkbox" ng-model="awaitingAdminConfirmation" id="adminConf"></label>
-            <input type="submit" value="Register" class="button">
+            <input type="submit" value="Register" class="button" ng-disabled="vm.submitting">
         </form>
     </div>
 </div>

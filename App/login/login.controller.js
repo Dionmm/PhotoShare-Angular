@@ -12,8 +12,10 @@
 
         vm.loginUser = function(){
             if(vm.loginUsername !== "" || vm.loginPassword !== ""){
+                vm.submitting = true;
                 photoShareAPI.loginUser(vm.loginUsername, vm.loginPassword)
                     .then(function(data){
+                        vm.submitting = false;
                         //Save the Bearer token to session storage
                         $window.sessionStorage.access_token = data.access_token;
 
@@ -27,6 +29,7 @@
                         $location.path('/');
                     },
                     function(error){
+                        vm.submitting = false;
                         var errorMessage = error.data.error_description;
                         toastr.error(errorMessage);
                         console.error(errorMessage);
@@ -51,17 +54,21 @@
                 console.error(message);
                 toastr.error(message);
             } else{
+                vm.submitting = true;
                 photoShareAPI.registerUser(vm.registerUsername, vm.registerEmail, vm.registerPassword, vm.registerConfirmPassword, vm.awaitingAdminConfirmation)
                     .then(function(response){
                             if(response.status === 200){
                                 console.info('success');
                                 toastr.success('Please check your email to confirm your account', 'Success!')
                             }
+                            vm.submitting = false;
                         },
                         function(error){
                             var errorMessage = error.data.Message;
                             toastr.error(errorMessage);
                             console.error(errorMessage);
+                            vm.submitting = false;
+
                         });
             }
         }

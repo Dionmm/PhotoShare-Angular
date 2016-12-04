@@ -119,7 +119,11 @@ button, input[type='submit']{
     background-color: #222;
     color: #7986cb;
 }
-
+.button:disabled{
+    cursor: not-allowed;
+    background-color: #485079;
+    color: #bbb;
+}
 
 /*CSS Loader credit http://codepen.io/msisto/pen/LntJe*/
 @-webkit-keyframes rotate-forever {
