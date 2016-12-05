@@ -195,6 +195,59 @@
             });
         };
 
+        var changeEmail = function(newEmail){
+            var req ={
+                method: 'POST',
+                url: apiUrl + 'user/changeemail',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                },
+                data: $httpParamSerializer({NewEmail: newEmail})
+            };
+
+            return $http(req).then(function(response){
+                return response;
+            });
+        };
+
+        var changeName = function(newFirstName, newLastName){
+            var req ={
+                method: 'POST',
+                url: apiUrl + 'user/changename',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                },
+                data: $httpParamSerializer({
+                    FirstName: newFirstName,
+                    LastName: newLastName
+                })
+            };
+
+            return $http(req).then(function(response){
+                return response;
+            });
+        };
+
+        var changeDescription = function(newDescription){
+            var req ={
+                method: 'POST',
+                url: apiUrl + 'user/changeDescription',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                },
+                data: $httpParamSerializer({
+                    Description: newDescription
+                })
+            };
+
+            return $http(req).then(function(response){
+                return response;
+            });
+        };
+
         return {
             getAllPhotos : getAllPhotos,
             searchAllPhotos: searchAllPhotos,
@@ -209,7 +262,10 @@
             getProfileInfoById: getProfileInfoById,
             getProfileInfoByUsername: getProfileInfoByUsername,
             getMyProfileInfo: getMyProfileInfo,
-            changePassword: changePassword
+            changePassword: changePassword,
+            changeEmail: changeEmail,
+            changeName: changeName,
+            changeDescription: changeDescription
         };
 
 

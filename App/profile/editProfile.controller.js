@@ -4,29 +4,81 @@
 
         vm.user = {};
         vm.changingPassword = false;
+        vm.changingEmail = false;
+        vm.changingName = false;
+        vm.changingDescription = false;
+        vm.newEmail = "";
+
 
         photoShareAPI.getMyProfileInfo().then(function(data){
             vm.user.firstName = data.FirstName || vm.user.username;
             vm.user.lastName = data.LastName;
             vm.user.profileDescription = data.ProfileDescription;
             vm.user.profilePhoto = data.ProfilePhoto;
+            vm.newEmail = data.Email;
             $('.backgroundPhoto').css('background-image', 'url(' + data.BackgroundPhoto + ')');
+
+            vm.newFirstName = vm.user.firstName;
+            vm.newLastName = vm.user.lastName;
         }, function(error){
             toastr.error('Something went wrong');
             console.error(error);
         });
 
         vm.changePassword = function(){
-            if(vm.newPassword === vm.newPasswordConfirm){
+            if(vm.newPassword === vm.newPasswordConfirm && vm.newPassword.length >= 8){
                 photoShareAPI.changePassword(vm.oldPassword, vm.newPassword, vm.newPasswordConfirm)
                     .then(function(response){
                         console.log(response);
                         toastr.success('Password changed')
+                        vm.changingPassword = false;
+                        vm.oldPassword = "";
+                        vm.newPassword = "";
+                        vm.newPasswordConfirm = "";
                     }, function(error){
                         console.error(error);
+                        toastr.error('Current password was incorrect')
                     });
             } else{
-                toastr.error('Passwords do not match');
+                toastr.error('Passwords must match and be a minimum of 8 characters long');
+            }
+        };
+
+        vm.changeEmail = function(){
+            if(vm.newEmail.length > 0){
+                photoShareAPI.changeEmail(vm.newEmail).then(function(response){
+                    toastr.success('Email changed');
+                    console.log(response);
+                }, function(error){
+                    console.error(error);
+                });
+            } else{
+                toastr.error('You can\'t not enter an email address... Cmon man')
+            }
+        };
+
+        vm.changeName = function(){
+            if(vm.newFirstName.length > 0 && vm.newLastName.length > 0){
+                photoShareAPI.changeName(vm.newFirstName, vm.newLastName).then(function(response){
+                    toastr.success('Name changed');
+                    console.log(response);
+                }, function(error){
+                    console.error(error);
+                });
+            } else{
+                toastr.error('You are a person, you need a name.');
+            }
+        };
+        vm.changeDescription = function(){
+            if(vm.newDescription.length > 0 && vm.newDescription.length < 100){
+                photoShareAPI.changeDescription(vm.newDescription).then(function(response){
+                    toastr.success('Description changed');
+                    console.log(response);
+                }, function(error){
+                    console.error(error);
+                });
+            } else{
+                toastr.error('Description can\'t be empty or over 100 characters');
             }
         };
 

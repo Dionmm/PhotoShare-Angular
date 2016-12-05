@@ -14,7 +14,8 @@
             if(vm.photoQuery){
                 photoShareAPI.searchAllPhotos(vm.photoQuery).then(function(data){
                     if(data.length < 1){
-                        //No photos found
+                        toastr.error('Please try another search term', 'No Photos Found');
+                        console.log('no photos');
                     } else{
                         vm.photos = data;
                         $('body').animate({scrollTop:$('#imageContainer').offset().top - 50}, '500');

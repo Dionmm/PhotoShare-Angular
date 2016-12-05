@@ -21,7 +21,7 @@
         </li>
         <li>
             <a href="" ng-click="vm.changingPassword = !vm.changingPassword">Change Password</a>
-            <form class="changePassword" ng-show="vm.changingPassword" ng-submit="vm.changePassword()">
+            <form class="editAccount" ng-show="vm.changingPassword" ng-submit="vm.changePassword()">
                 <input type="password" ng-model="vm.oldPassword" placeholder="Current Password">
                 <input type="password" ng-model="vm.newPassword" placeholder="New Password">
                 <input type="password" ng-model="vm.newPasswordConfirm" placeholder="New Password">
@@ -29,10 +29,26 @@
             </form>
         </li>
         <li>
-            <a href="">Change Email Address</a>
+            <a href="" ng-click="vm.changingEmail = !vm.changingEmail">Change Email Address</a>
+            <form class="editAccount" ng-show="vm.changingEmail" ng-submit="vm.changeEmail()">
+                <input type="email" ng-model="vm.newEmail" placeholder="john@doe.com">
+                <input type="submit" class="button" value="Change Email">
+            </form>
         </li>
         <li>
-            <a href="">Change Name</a>
+            <a href="" ng-click="vm.changingName = !vm.changingName">Change Name</a>
+            <form class="editAccount" ng-show="vm.changingName" ng-submit="vm.changeName()">
+                <input type="text" ng-model="vm.newFirstName" placeholder="First Name">
+                <input type="text" ng-model="vm.newLastName" placeholder="Last Name">
+                <input type="submit" class="button" value="Change Name">
+            </form>
+        </li>
+        <li>
+            <a href="" ng-click="vm.changingDescription = !vm.changingDescription">Change Description</a>
+            <form class="editAccount" ng-show="vm.changingDescription" ng-submit="vm.changeDescription()">
+                <input type="text" ng-model="vm.newDescription" placeholder="Be creative..." maxlength="100">
+                <input type="submit" class="button" value="Change Description">
+            </form>
         </li>
     </ul>
     <div class="dragndrop" ng-show="vm.dragndropBG" nv-file-drop="" uploader="vm.backgroundUploader">
