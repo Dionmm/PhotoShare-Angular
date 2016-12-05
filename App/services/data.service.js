@@ -1,14 +1,18 @@
 (function(){
 'use strict'
-    var photoShareAPI = function($http, $httpParamSerializer, $window, FileUploader){
+    var photoShareAPI = function($http, $httpParamSerializer, $window, FileUploader, $rootScope){
 
         var tokenUrl = "https://www.photoshare.party/token";
         var apiUrl = "https://www.photoshare.party/api/";
         var authToken = 'Bearer ' + $window.sessionStorage.access_token;
         var pageSize = 20;
 
-        //Photo API
+        //Get the new Authentication Token
+        $rootScope.$on('newToken', function(){
+            authToken = 'Bearer ' + $window.sessionStorage.access_token;
+        });
 
+        //Photo API
         var getAllPhotos = function(){
             return $http.get(apiUrl + "photo")
                 .then(function(response){
@@ -41,6 +45,7 @@
         };
 
         var createFileUploader = function(){
+            console.log(authToken);
             var headers = {
                 Authorization: authToken
             };

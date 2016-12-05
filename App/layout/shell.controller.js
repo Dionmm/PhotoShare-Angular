@@ -1,5 +1,5 @@
 (function(){
-    angular.module('PhotoShare').controller("ShellController",function($window ,$scope){
+    angular.module('PhotoShare').controller("ShellController",function($window ,$rootScope){
         var vm = this;
 
         vm.authorised = false;
@@ -18,10 +18,14 @@
             vm.authorityCheck();
         }
 
-        $scope.$on('handleLogin', function(event, args){
+
+        //$rootScope because it needs to communicate with the data.service
+        //when a user has just logged in
+        $rootScope.$on('handleLogin', function(event, args){
             vm.name = args.name || args.username;
             vm.role = $window.sessionStorage.role;
             vm.authorityCheck();
+            $rootScope.$broadcast('newToken');
         });
 
 
@@ -34,7 +38,6 @@
 
         //Toastr settings
         toastr.options.closeButton = true;
-        toastr.options.timeOut = 40000;
 
 
     });
