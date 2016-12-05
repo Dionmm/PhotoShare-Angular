@@ -2,12 +2,12 @@
     <div class="backgroundPhoto">
     </div>
     <div class="profileHeader">
-        <h2>Dion MacIntyre</h2>
+        <h2>{{vm.user.firstName}} {{vm.user.lastName}}</h2>
         <div class="profilePhoto">
-            <img src="App/images/profile.jpg" alt="">
+            <img ng-src="{{vm.user.profilePhoto}}"  alt="Profile Photo">
         </div>
         <div class="profileDescription">
-            <p>Explore the world, test yourself</p>
+            <p>{{vm.user.profileDescription}}</p>
         </div>
     </div>
 </div>

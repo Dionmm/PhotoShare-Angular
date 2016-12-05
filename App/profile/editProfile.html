@@ -2,25 +2,31 @@
     <div class="backgroundPhoto">
     </div>
     <div class="profileHeader">
-        <h2>Dion MacIntyre</h2>
+        <h2>{{vm.user.firstName}} {{vm.user.lastName}}</h2>
         <div class="profilePhoto">
-            <img src="App/images/profile.jpg" alt="">
+            <img ng-src="{{vm.user.profilePhoto}}" alt="">
         </div>
         <div class="profileDescription">
-            <p>Explore the world, test yourself</p>
+            <p>{{vm.user.profileDescription}}</p>
         </div>
     </div>
 </div>
 <div class="accountDetails">
     <ul>
         <li>
-            <a href="">Change Background Photo</a>
+            <a href="" ng-click="vm.background()">Change Background Photo</a>
         </li>
         <li>
-            <a href="">Change Profile Photo</a>
+            <a href="" ng-click="vm.profile()">Change Profile Photo</a>
         </li>
         <li>
-            <a href="">Change Password</a>
+            <a href="" ng-click="vm.changingPassword = !vm.changingPassword">Change Password</a>
+            <form class="changePassword" ng-show="vm.changingPassword" ng-submit="vm.changePassword()">
+                <input type="password" ng-model="vm.oldPassword" placeholder="Current Password">
+                <input type="password" ng-model="vm.newPassword" placeholder="New Password">
+                <input type="password" ng-model="vm.newPasswordConfirm" placeholder="New Password">
+                <input type="submit" class="button" value="Change Password">
+            </form>
         </li>
         <li>
             <a href="">Change Email Address</a>
@@ -28,6 +34,13 @@
         <li>
             <a href="">Change Name</a>
         </li>
-
     </ul>
+    <div class="dragndrop" ng-show="vm.dragndropBG" nv-file-drop="" uploader="vm.backgroundUploader">
+        <h2>Drag and drop your photo here</h2>
+        <button class="button" ng-click="vm.dragndropBG = false">Close</button>
+    </div>
+    <div class="dragndrop" ng-show="vm.dragndropPP" nv-file-drop="" uploader="vm.profileUploader">
+        <h2>Drag and drop your photo here</h2>
+        <button class="button" ng-click="vm.dragndropPP = false">Close</button>
+    </div>
 </div>

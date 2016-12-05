@@ -8,7 +8,6 @@ body, html, form, input, div, img, header, a, h1, h2, h3, h4, p, ul, li, button{
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: Purple;
 }
 header{
 
@@ -225,7 +224,7 @@ button, input[type='submit']{
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
 }
-.searchSubmit{
+.inputContainer .searchSubmit{
     width: 10%;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -457,7 +456,7 @@ button, input[type='submit']{
     width:100%;
     height: 80vh;
     overflow: hidden;
-    background: url("../images/background-medium.jpg") no-repeat center center;
+    background: no-repeat center center;
     background-size:cover;
 }
 .backgroundPhoto img{
@@ -501,7 +500,28 @@ button, input[type='submit']{
     list-style: none;
 
 }
+.changePassword{
+    margin:15px;
+}
 
+.dragndrop{
+    z-index: 999;
+    background-color: rgba(34, 34, 34, 0.6);
+    width: 100%;
+    height:100%;
+    position: fixed;
+    top:0;
+    left:0;
+}
+.dragndrop button{
+    position: relative;
+    top: 60px;
+}
+.dragndrop h2{
+    color: #fff;
+    position: relative;
+    top:50%;
+}
 /*Admin Page*/
 .adminSidebar{
     padding: 0;

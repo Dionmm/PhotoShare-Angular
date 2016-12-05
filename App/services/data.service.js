@@ -44,22 +44,16 @@
             });
         };
 
-        var createFileUploader = function(){
-            console.log(authToken);
+        var createFileUploader = function(urlEnd){
             var headers = {
                 Authorization: authToken
             };
-            var url = apiUrl + 'photo';
+            var url = apiUrl + urlEnd;
 
             return new FileUploader({url: url, headers: headers, removeAfterUpload: true, queueLimit: 1})
         };
 
         var uploadPhoto = function(uploader, callback){
-            var headers = {
-                Authorization: authToken
-            };
-            uploader.url = apiUrl + 'photo';
-            uploader.headers = headers;
             uploader.uploadAll();
             uploader.onSuccessItem = function(fileItem, response, status){
                 console.info('Success', response, status);
@@ -67,7 +61,6 @@
             };
             uploader.onErrorItem = function(fileItem, response, status){
                 console.error('Error', response, status);
-                toastr.error()
             };
         };
 
@@ -145,7 +138,7 @@
             return $http(req);
         };
 
-        var getProfileInfo = function(userId){
+        var getProfileInfoById = function(userId){
             var req ={
                 method: 'GET',
                 url: apiUrl + 'user/' + userId
@@ -153,9 +146,54 @@
 
             return $http(req).then(function(response){
                 return response.data;
-            })
+            });
         };
 
+        var getProfileInfoByUsername = function(username){
+            var req ={
+                method: 'GET',
+                url: apiUrl + 'user/name/' + username
+            };
+
+            return $http(req).then(function(response){
+                return response.data;
+            });
+        };
+
+        var getMyProfileInfo = function(){
+            var req ={
+                method: 'GET',
+                url: apiUrl + 'user/',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                }
+            };
+
+            return $http(req).then(function(response){
+                return response.data;
+            });
+        };
+
+        var changePassword = function(oldPassword, newPassword, confirmPassword){
+            var req ={
+                method: 'POST',
+                url: apiUrl + 'user/changepassword',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                },
+                data: $httpParamSerializer({
+                    OldPassword: oldPassword,
+                    NewPassword: newPassword,
+                    ConfirmPassword: confirmPassword
+                })
+            };
+
+            return $http(req).then(function(response){
+                return response;
+            });
+        };
 
         return {
             getAllPhotos : getAllPhotos,
@@ -168,7 +206,10 @@
             addPurchaseToDB: addPurchaseToDB,
             loginUser: loginUser,
             registerUser: registerUser,
-            getProfileInfo: getProfileInfo
+            getProfileInfoById: getProfileInfoById,
+            getProfileInfoByUsername: getProfileInfoByUsername,
+            getMyProfileInfo: getMyProfileInfo,
+            changePassword: changePassword
         };
 
 

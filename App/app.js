@@ -29,7 +29,7 @@
             })
             .when("/profile/", {
                 templateUrl: "App/profile/editProfile.html",
-                controller: "ProfileController as vm"
+                controller: "EditProfileController as vm"
             })
             .when("/admin/", {
                 templateUrl: "App/admin/admin.html",

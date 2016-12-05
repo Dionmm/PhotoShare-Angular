@@ -7,7 +7,7 @@
             price: 0,
             exif: []
         };
-        vm.uploader = photoShareAPI.createFileUploader();
+        vm.uploader = photoShareAPI.createFileUploader('photo');
         vm.metaDataItems = [0]; //Number of metadata input boxes to be displayed based on index
         if(vm.uploader.isHTML5){
             $('.button.upload').css('color','#7986cb');
@@ -47,6 +47,7 @@
                 });
             } else{
                 console.warn('Something went wrong');
+                toastr.warning('Title must be under 20 characters long');
                 vm.resetProgressBar();
             }
         };

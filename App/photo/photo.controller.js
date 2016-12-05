@@ -22,7 +22,7 @@
                 }
             });
 
-        vm.getProfileInfo = function(userId){
+        vm.getProfileInfoById = function(userId){
             photoShareAPI.getProfileInfo(userId)
                 .then(function(data){
                     vm.user.firstName = data.FirstName || vm.user.username;
