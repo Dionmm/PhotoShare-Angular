@@ -6,6 +6,7 @@
 
         var chat = $.connection.chatHub;
         var token = $window.sessionStorage.access_token;
+        vm.role = $window.sessionStorage.role;
         var chatHidden = false;
         var initialChatHeight = $('.chat').prop('scrollHeight');
 
@@ -35,6 +36,10 @@
         chat.client.loadMessages = function(messages){
             vm.content = messages.reverse();
 
+        };
+        chat.client.removeMessage = function(id){
+            var index = vm.content.indexOf(id);
+            vm.content.splice(index, 1);
         };
         chat.client.error = function(error){
             console.error(error);
@@ -66,6 +71,10 @@
                 $('.chatHeader p').text('Show Chat');
                 chatHidden = true;
             }
+        };
+
+        vm.removeMessage = function(id){
+            chat.server.hideMessage(id)
         }
     });
 

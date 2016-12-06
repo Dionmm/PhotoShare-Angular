@@ -1,7 +1,8 @@
 ﻿<div class="chatBox" ng-controller="ChatController as vm">
     <div class="chatHeader" ng-click="vm.hideChat()"><p>Hide Chat</p></div>
     <ul class="chat">
-        <li ng-repeat="message in vm.content">
+        <li ng-repeat="message in vm.content" >
+            <button class="removeMessage" ng-click="vm.removeMessage(message.Id)" ng-show="vm.role === 'administrator'">&#x2715;</button>
             <p>{{message.Content}}</p>
             <span>{{message.UserName}}</span>
         </li>

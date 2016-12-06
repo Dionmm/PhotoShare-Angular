@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('PhotoShare', ["ngRoute", "angularFileUpload"]);
+    var app = angular.module('PhotoShare', ["ngRoute", "angularFileUpload", "hj.gridify"]);
 
     app.config(function($routeProvider){
         $routeProvider

@@ -450,9 +450,6 @@ button, input[type='submit']{
     width: 280px;
     display: flex;
     flex-direction: column;
-
-    display: none;
-    
 }
 .chatHeader {
     height: 35px;
