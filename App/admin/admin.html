@@ -3,12 +3,11 @@
         <ul>
             <li ng-click="vm.showUsers()">Users</li>
             <li ng-click="vm.showPhotos()">Photos</li>
-            <li ng-click="vm.showSales()">Sales</li>
             <li ng-click="vm.showAnalytics()">Analytics</li>
         </ul>
     </div>
     <div class="adminContent">
-        <div ng-show="vm.showAction === 1">
+        <div ng-show="vm.showingUsers">
             <table>
                 <thead>
                 <tr>
@@ -45,11 +44,29 @@
                 </tbody>
             </table>
         </div>
-        <div ng-show="vm.showAction === 2">
-
-        </div>
-        <div ng-show="vm.showAction === 3">
-
+        <div ng-hide="vm.showingUsers">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Title</td>
+                        <td>Price</td>
+                        <td>Uploaded By</td>
+                        <td>Full Name</td>
+                        <td>Total Sales</td>
+                        <td>URL</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="photo in vm.photos">
+                        <td>{{photo.Name}}</td>
+                        <td>{{photo.Price}}</td>
+                        <td>{{photo.UserName}}</td>
+                        <td>{{photo.UserFirstName}} {{photo.UserLastName}}</td>
+                        <td>{{photo.Sales}}</td>
+                        <td><a ng-href="{{photo.Address}}">Link</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

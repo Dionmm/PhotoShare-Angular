@@ -1,26 +1,26 @@
 (function(){
     angular.module('PhotoShare').controller('AdminController', function(photoShareAPI){
         var vm = this;
-        vm.showAction = 1;
+        vm.showingUsers = true;
 
         vm.showUsers = function(){
             photoShareAPI.getAllUsers().then(function(response){
                 vm.users = response;
-
-                console.log(response);
             }, function(error){
                 console.error(error);
                 toastr.error('Something went wrong, please try again');
             });
-            vm.showAction = 1;
+            vm.showingUsers = true;
         };
         vm.showPhotos = function(){
-            vm.showAction = 2;
+            photoShareAPI.getAllPhotos().then(function(response){
+                vm.photos = response;
 
-        };
-        vm.showSales = function(){
-            vm.showAction = 3;
-
+            }, function(error){
+                console.error(error);
+                toastr.error('Something went wrong');
+            });
+            vm.showingUsers = false;
         };
         vm.showAnalytics = function(){
             toastr.error('Yea, implementing this was wishful thinking', '501 Not Implemented');
