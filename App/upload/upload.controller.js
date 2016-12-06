@@ -23,6 +23,14 @@
             }
 
         };
+        vm.uploader.onWhenAddingFileFailed = function(item, filter, options){
+            if(filter.name === 'imageFilter'){
+                toastr.error('You cannot upload that type of file');
+            } else if(filter.name === 'queueLimit'){
+                toastr.error('You can only upload one item at a time');
+            }
+            console.log(filter);
+        };
         vm.uploader.onErrorItem = function(fileItem, response, status){
             console.error('Error', response, status);
             toastr.error(response, 'Error');

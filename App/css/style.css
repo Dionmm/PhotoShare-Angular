@@ -352,8 +352,13 @@ button, input[type='submit']{
     height:100%;
     width: 100%;
     margin: auto;
-    background-color: #999999;
-    border: dashed 1px;
+    display: flex;
+}
+.drag-n-drop ul{
+    margin:auto;
+}
+.drag-n-drop li{
+    list-style: none;
 }
 .metaDataContainer{
     overflow-y: scroll;
