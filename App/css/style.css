@@ -478,9 +478,18 @@ button, input[type='submit']{
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .chat span {
     font-size: 0.8em;
+}
+.chat .removeMessage{
+    width:20px;
+    height:20px;
+    background-color: #cb7986;
+    position: absolute;
+    top: -10px;
+    right:0;
 }
 .chat p {
     word-break: break-all;
@@ -491,7 +500,6 @@ button, input[type='submit']{
     color: #fff;
     font-weight: 400;
     font-size: 0.9em;
-    
 }
 .chatBox form{
 
