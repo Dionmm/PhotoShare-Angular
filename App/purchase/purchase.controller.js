@@ -8,22 +8,24 @@
         vm.cvc = 123;
         vm.month = 12;
         vm.year = 21;
+
         $scope.$on('photoLoaded', function(event, args){
             vm.photoId = args.photoId;
         });
 
         vm.createChargeRequest = function(){
+            vm.submitting = true;
             var card = {
                 number: vm.cardNumber,
                 cvc: vm.cvc,
                 exp_month: vm.month,
                 exp_year: vm.year
             };
-            console.log('ran');
 
             Stripe.card.createToken(card, function(status, response){
                 if(response.error){
                     toastr.error(response.error);
+                    vm.submitting = false;
                     return console.error(response.error);
                 }
 
@@ -32,9 +34,12 @@
                         .then(function(response){
                             console.info(response);
                             toastr.success('Good choice', 'Purchase Successful');
+                            vm.submitting = false;
+
                         }, function(error){
                             console.error(error);
                             toastr.error(error.data.Message);
+                            vm.submitting = false;
 
                         });
                 }

@@ -26,6 +26,7 @@
             vm.role = $window.sessionStorage.role;
             vm.authorityCheck();
             $rootScope.$broadcast('newToken');
+            console.log('handled');
         });
 
 

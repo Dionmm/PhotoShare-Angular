@@ -3,5 +3,5 @@
     <label>CVC</label><input type="number" ng-model="vm.cvc" placeholder="CVC">
     <label>Expiry Month</label><input type="number" ng-model="vm.month" placeholder="Month Expiry">
     <label>Expiry Year</label><input type="number" ng-model="vm.year" placeholder="Year Expiry">
-    <input type="submit" value="Buy" class="button">
+    <input type="submit" value="Buy" class="button" ng-disabled="vm.submitting">
 </form>

@@ -38,7 +38,7 @@
                 </table>
             </div>
         </div>
-        <div ng-if="vm.loggedIn && vm.photo.price > 0">
+        <div ng-show="vm.loggedIn && vm.photo.price > 0">
             <div ng-include="'App/purchase/purchase.html'"></div>
         </div>
     </div>

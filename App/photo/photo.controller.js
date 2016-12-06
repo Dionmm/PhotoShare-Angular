@@ -10,9 +10,10 @@
         };
         vm.user = {};
 
-
         photoShareAPI.getPhotoById(vm.photo.id)
             .then(function(data){
+                $scope.$broadcast('photoLoaded', {photoId: vm.photo.id});
+
                 vm.photo.address = data.Address;
                 vm.photo.name = data.Name;
                 vm.photo.price = data.Price;
@@ -22,7 +23,6 @@
 
                 vm.canUpdatePhoto(vm.user.username);
 
-                $scope.$broadcast('photoLoaded', {photoId: vm.photo.id});
 
                 vm.getProfileInfoById(vm.user.userId);
             }, function(error){
