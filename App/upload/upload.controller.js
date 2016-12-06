@@ -73,6 +73,10 @@
             }
         };
 
+        vm.removeFromQueue = function(){
+            vm.uploader.clearQueue();
+        };
+
         vm.addMetaData = function(){
             var arrayLength = vm.metaDataItems.length;
             var itemAtIndex = vm.metaDataItems[arrayLength - 1] || 0;

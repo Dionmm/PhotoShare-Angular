@@ -359,6 +359,7 @@ button, input[type='submit']{
 }
 .drag-n-drop li{
     list-style: none;
+    position: relative;
 }
 .metaDataContainer{
     overflow-y: scroll;
@@ -388,11 +389,26 @@ button, input[type='submit']{
     color:#fff;
     padding: 2px 4px;
 }
+.removeButton{
+    opacity:1;
+    margin:0;
+    left:-10px;
+    top: -10px;
+    
+}
 .metaData:hover > div{
     opacity: 1;
 }
 .hiddenButton:hover{
     opacity: 1;
+}
+.saleContainer{
+    display: flex;
+    padding:10px;
+}
+.uploadSidebar .saleContainer input{
+    margin:auto 0 auto auto;
+    width:50%;
 }
 .sidebar .button{
     margin-top: 10px;
