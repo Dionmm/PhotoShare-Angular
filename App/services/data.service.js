@@ -259,6 +259,40 @@
             });
         };
 
+        var getAllUsers = function(){
+            var req ={
+                method: 'GET',
+                url: apiUrl + 'admin',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                }
+            };
+
+            return $http(req).then(function(response){
+                return response.data;
+            });
+        };
+
+        var changeRole = function(username, role){
+            var req ={
+                method: 'POST',
+                url: apiUrl + 'admin/',
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                },
+                data: $httpParamSerializer({
+                    UserName: username,
+                    Role: role
+                })
+            };
+
+            return $http(req).then(function(response){
+                return response;
+            });
+        };
+
         return {
             getAllPhotos : getAllPhotos,
             searchAllPhotos: searchAllPhotos,
@@ -276,7 +310,9 @@
             changePassword: changePassword,
             changeEmail: changeEmail,
             changeName: changeName,
-            changeDescription: changeDescription
+            changeDescription: changeDescription,
+            getAllUsers: getAllUsers,
+            changeRole: changeRole
         };
 
 

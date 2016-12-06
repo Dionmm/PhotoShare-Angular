@@ -1,13 +1,55 @@
 <div class="pageContainer admin">
     <div class="sidebar adminSidebar">
         <ul>
-            <li>Action 1</li>
-            <li>Action 2</li>
-            <li>Action 3</li>
-            <li>Action 4</li>
+            <li ng-click="vm.showUsers()">Users</li>
+            <li ng-click="vm.showPhotos()">Photos</li>
+            <li ng-click="vm.showSales()">Sales</li>
+            <li ng-click="vm.showAnalytics()">Analytics</li>
         </ul>
     </div>
     <div class="adminContent">
+        <div ng-show="vm.showAction === 1">
+            <table>
+                <thead>
+                <tr>
+                    <td>Username</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Role</td>
+                    <td>Requested Photographer</td>
+                    <td>Email Confirmed</td>
+                    <td>Lockout Enabled</td>
+                    <td>Failed Access Attempts</td>
+                    <td>Lockout End Date</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in vm.users">
+                        <td>{{user.UserName}}</td>
+                        <td>{{user.FirstName}}</td>
+                        <td>{{user.LastName}}</td>
+                        <td>
+                            <select name="roles" ng-model="user.Role" ng-change="vm.roleChanged(user.UserName, user.Role)">
+                                <option value="administrator">Admin</option>
+                                <option value="photographer">Photographer</option>
+                                <option value="shopper">Shopper</option>
+                                <option value="banned">Banned</option>
+                            </select>
+                        </td>
+                        <td>{{user.AwaitingAdminConfirmation}}</td>
+                        <td>{{user.EmailConfirmed}}</td>
+                        <td>{{user.LockoutEnabled}}</td>
+                        <td>{{user.AccessFailedCount}}</td>
+                        <td>{{user.LockoutEndDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="vm.showAction === 2">
 
+        </div>
+        <div ng-show="vm.showAction === 3">
+
+        </div>
     </div>
 </div>
