@@ -189,7 +189,7 @@
         var getUsersMostRecentPhotos = function(username){
             var req ={
                 method: 'GET',
-                url: apiUrl + 'user/photos' + username,
+                url: apiUrl + 'user/photos/' + username,
                 headers:{
                     'Content-Type': 'application/x-www-form-urlencoded',
                     Authorization: authToken
