@@ -16,6 +16,9 @@
                 photoShareAPI.loginUser(vm.loginUsername, vm.loginPassword)
                     .then(function(data){
                         vm.submitting = false;
+                        if(data.role === 'banned'){
+                            return toastr.error('Account is banned');
+                        }
                         //Save the Bearer token to session storage
                         $window.sessionStorage.access_token = data.access_token;
 

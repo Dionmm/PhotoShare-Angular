@@ -5,8 +5,10 @@
             username: $routeParams.username
         };
         console.log(vm.user.username);
-        photoShareAPI.getMostRecentPhotos().then(function(data){
+        photoShareAPI.getUsersMostRecentPhotos(vm.user.username).then(function(data){
             vm.photos = data;
+        }, function(){
+            console.error(error);
         });
 
         photoShareAPI.getProfileInfoByUsername(vm.user.username).then(function(data){

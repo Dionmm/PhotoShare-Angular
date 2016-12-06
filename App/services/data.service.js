@@ -186,6 +186,21 @@
             });
         };
 
+        var getUsersMostRecentPhotos = function(username){
+            var req ={
+                method: 'GET',
+                url: apiUrl + 'user/photos' + username,
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Authorization: authToken
+                }
+            };
+
+            return $http(req).then(function(response){
+                return response.data;
+            });
+        };
+
         var changePassword = function(oldPassword, newPassword, confirmPassword){
             var req ={
                 method: 'POST',
@@ -307,6 +322,7 @@
             getProfileInfoById: getProfileInfoById,
             getProfileInfoByUsername: getProfileInfoByUsername,
             getMyProfileInfo: getMyProfileInfo,
+            getUsersMostRecentPhotos: getUsersMostRecentPhotos,
             changePassword: changePassword,
             changeEmail: changeEmail,
             changeName: changeName,
