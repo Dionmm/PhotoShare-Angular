@@ -30,23 +30,7 @@
             //scroll to the top of imageContainer and remove 50px (for header)
             $('body').animate({scrollTop:$('#imageContainer').offset().top - 50}, '500');
             vm.photos = vm.originalPhotos;
-        };
-
-        vm.perRow = function(){
-            return $window.innerWidth > 768 ? 5 : 3;
-        };
-
-        vm.items = [];
-
-        for (var i = 0; i < 50; i++) {
-
-            vm.items[i] = {
-                ratio: Math.max(0.5, Math.random() * 2),
-                color: '#' + ('000000' + Math.floor(Math.random() * 16777215).toString(16)).slice(-6)
-            };
-
         }
-        console.log(vm.items);
 
     });
 })();

@@ -12,16 +12,9 @@
         <div class="loader"></div>
         <p>Getting the latest photos...</p>
     </div>
-    <!--<div class="individualImage" ng-repeat="photo in vm.photos">-->
-        <!--<a ng-href="#/photo/{{photo.Id}}">-->
-            <!--<img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">-->
-        <!--</a>-->
-    <!--</div>-->
-        <hj-gridify hj-gridify-options="{collection: vm.items, perRow: vm.getPerRow, averageRatio: 1.5, gutter: 10, }" hj-gridify-item-as="tile">
-
-            <div class="tile">
-                Tile contents
-            </div>
-
-        </hj-gridify>
+    <div class="individualImage" ng-repeat="photo in vm.photos">
+        <a ng-href="#/photo/{{photo.Id}}">
+            <img ng-src="{{photo.OptimisedAddress}}" alt="{{photo.Name}}">
+        </a>
+    </div>
 </div>
