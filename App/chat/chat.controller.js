@@ -38,8 +38,18 @@
 
         };
         chat.client.removeMessage = function(id){
-            var index = vm.content.indexOf(id);
-            vm.content.splice(index, 1);
+            var count = 0;
+            var index = -1;
+            for(var message of vm.content){
+                if(message.Id === id){
+                    index = count;
+                }
+                count++;
+            }
+            if(index >= 0){
+                vm.content.splice(index, 1);
+                $scope.$apply();
+            }
         };
         chat.client.error = function(error){
             console.error(error);
@@ -74,7 +84,7 @@
         };
 
         vm.removeMessage = function(id){
-            chat.server.hideMessage(id)
+            chat.server.hideMessage(id);
         }
     });
 

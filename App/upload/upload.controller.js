@@ -84,7 +84,7 @@
         };
         vm.removeMetaData = function(index){
             vm.metaDataItems.splice(index, 1);
-            vm.photo.exif.splice(index, 1)
+            vm.photo.exif.splice(index, 1);
         };
 
         vm.resetProgressBar = function(){
