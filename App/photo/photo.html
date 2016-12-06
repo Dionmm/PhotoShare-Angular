@@ -13,23 +13,33 @@
             <div class="title">
                 <h4>{{vm.photo.name}}</h4>
             </div>
-            <div class="exifDetails">
-                <h4>Details:</h4>
-                <ul>
-                    <li>Key One</li>
-                    <li>Key Two</li>
-                    <li>Key Three</li>
-                    <li>Key Four</li>
-                    <li>Key Five</li>
-                    <li>Key Six</li>
-                    <li>Key Seven</li>
-                    <li>Key Eight</li>
-                    <li>Key Nine</li>
-                    <li>Key Ten</li>
-                </ul>
+            <div class="price">
+                <h3 ng-hide="vm.photo.price === 0">£{{vm.photo.price}}</h3>
+                <h3 ng-show="vm.photo.price === 0">Free</h3>
+            </div>
+            <form ng-show="vm.owner" ng-submit="vm.updatePhoto()">
+                <input type="text" ng-model="vm.newName" placeholder="Photo name">
+                <input type="number" ng-model="vm.newPrice" placeholder="Price" step="any" min="0">
+                <input type="submit" class="button">
+            </form>
+            <div class="exifDataContainer">
+                <button class="button" ng-click="vm.showExif = !vm.showExif">Show Exif Data</button>
+                <table class="exifData" ng-show="vm.showExif">
+                    <thead>
+                    <tr>
+                        <th>Exif Name</th>
+                        <th>Exif Value</th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="detail in vm.photo.exif">
+                        <td>{{detail.Name}}</td>
+                        <td>{{detail.Value}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div ng-include="'App/purchase/purchase.html'"></div>
-
+        <div ng-if="vm.loggedIn && vm.photo.price > 0">
+            <div ng-include="'App/purchase/purchase.html'"></div>
+        </div>
     </div>
 </div>

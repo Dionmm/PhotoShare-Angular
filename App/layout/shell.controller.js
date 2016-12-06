@@ -33,6 +33,7 @@
             delete $window.sessionStorage.access_token;
             delete $window.sessionStorage.name;
             delete $window.sessionStorage.role;
+            delete $window.sessionStorage.username;
             $window.location.reload();
         };
 

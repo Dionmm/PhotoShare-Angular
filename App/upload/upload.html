@@ -12,7 +12,7 @@
     <div class="uploadSidebar sidebar">
         <input type="text" ng-model="vm.photo.name" placeholder="Title" maxlength="20">
         <label for="forSale">For Sale</label><input id="forSale" type="checkbox" name="forSale" ng-model="vm.forSale">
-        <input type="number" min="0" ng-model="vm.photo.price" ng-disabled="!vm.forSale" placeholder="Free">
+        <input type="number" min="0" step="any" ng-model="vm.photo.price" ng-disabled="!vm.forSale" placeholder="Free">
         <p>Meta Data</p>
         <div class="metaDataContainer">
             <div ng-repeat="number in vm.metaDataItems track by $index" class="metaData">

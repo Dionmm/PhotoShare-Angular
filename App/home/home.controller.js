@@ -5,6 +5,8 @@
         photoShareAPI.getMostRecentPhotos().then(function(data){
             if(data){
                 vm.photos = data;
+                //When the user wants to bring back the latest photos
+                vm.originalPhotos = data;
             }else{
                 toastr.error('Something went wrong, please try again');
             }
@@ -27,6 +29,7 @@
         vm.explore = function(){
             //scroll to the top of imageContainer and remove 50px (for header)
             $('body').animate({scrollTop:$('#imageContainer').offset().top - 50}, '500');
+            vm.photos = vm.originalPhotos;
         }
 
     });

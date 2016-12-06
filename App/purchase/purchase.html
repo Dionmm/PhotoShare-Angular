@@ -1,7 +1,7 @@
-<div ng-controller="PurchaseController as vm">
-    <label>Card Number</label><input type="number" ng-model="vm.cardNumber">
-    <label>CVC</label><input type="number" ng-model="vm.cvc">
-    <label>Expiry Month</label><input type="number" ng-model="vm.month">
-    <label>Expiry Year</label><input type="number" ng-model="vm.year">
-    <button ng-click="vm.createChargeRequest()">Buy</button>
-</div>
+<form ng-controller="PurchaseController as vm" ng-submit="vm.createChargeRequest()" class="payment">
+    <label>Card Number</label><input type="number" ng-model="vm.cardNumber" placeholder="Card Number">
+    <label>CVC</label><input type="number" ng-model="vm.cvc" placeholder="CVC">
+    <label>Expiry Month</label><input type="number" ng-model="vm.month" placeholder="Month Expiry">
+    <label>Expiry Year</label><input type="number" ng-model="vm.year" placeholder="Year Expiry">
+    <input type="submit" value="Buy" class="button">
+</form>

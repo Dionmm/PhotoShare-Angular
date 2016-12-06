@@ -53,6 +53,7 @@
         };
 
         vm.updatePhoto = function(){
+            //Undefined is allowed becuase blank names are allowed on initial upload
             if((vm.photo.name === undefined || vm.photo.name.length <= 20)  && vm.photo.price >= 0){
                 console.log('Name is good');
 

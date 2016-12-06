@@ -107,7 +107,7 @@
             console.log('Add failed');
         };
         vm.profileUploader.onBeforeUploadItem = function(){
-            toastr.info('Uploading background photo');
+            toastr.info('Uploading profile photo');
         };
         vm.profileUploader.onSuccessItem = function (file, response, status) {
             toastr.success('Upload Complete');

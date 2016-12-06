@@ -71,14 +71,17 @@
                 Name: name,
                 Price: price
             };
-            var count = 0;
-            for(var x of exifData){
-                var exifName = "Exif[" + count + "].Name";
-                var exifValue = "Exif[" + count + "].Value";
-                data[exifName] = x.Name;
-                data[exifValue] = x.Value;
-                count++;
+            if(exifData){
+                var count = 0;
+                for(var x of exifData){
+                    var exifName = "Exif[" + count + "].Name";
+                    var exifValue = "Exif[" + count + "].Value";
+                    data[exifName] = x.Name;
+                    data[exifValue] = x.Value;
+                    count++;
+                }
             }
+
             var req = {
               method: 'PUT',
               url: apiUrl + 'photo/' + id,
@@ -93,10 +96,10 @@
             });
         };
 
-        var addPurchaseToDB = function(token, id){
+        var addPurchaseToDB = function(token, photoId){
             var req = {
                 method: 'POST',
-                url: apiUrl + 'purchase/' + id,
+                url: apiUrl + 'purchase/' + photoId,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     Authorization: authToken

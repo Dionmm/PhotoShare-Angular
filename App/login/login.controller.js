@@ -20,6 +20,7 @@
                         $window.sessionStorage.access_token = data.access_token;
 
                         $window.sessionStorage.name = data.firstName || data.userName;
+                        $window.sessionStorage.username = data.username;
 
                         $window.sessionStorage.role = data.role;
                         //Event to initiate the change of nav in the top right
